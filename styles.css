@@ -51,6 +51,7 @@ label{
     align-items: flex-start;
 }
 .input_field{
+    outline: none;
     transition: all .3s;
     width: 25vmax;
     height: 22px;
