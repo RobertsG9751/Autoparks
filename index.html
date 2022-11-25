@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="box_header">
+            <h1>Autoparka Reģistrācija</h1>
+        </div>
+        <div class="box_body">
+            <div class="input_box">
+                <label for="apliecibas_nr">Apliecības nr.</label>
+                <input class="input_field"type="number" id="apliecibas_nr">
+            </div>
+            <div class="input_box">
+                <label for="registracijas_nr">Reģistrācijas nr.</label>
+                <input class="input_field"type="number" id="registracijas_nr">
+            </div>
+            <div class="input_box">
+                <label for="marka">Marka</label>
+                <select class="input_field" id="marka">
+                    <option disabled selected value></option>
+                </select>
+            </div>
+            <div class="input_box">
+                <label for="modelis">Modelis</label>
+                <select disabled class="input_field" id="modelis">
+                    <option disabled selected value></option>
+                </select>
+            </div>
+            <div class="input_box">
+                <label for="vin">VIN</label>
+                <input class="input_field"type="text" id="vin">
+            </div>
+            <div class="input_box">
+                <label for="city">Turētāja pilsēta</label>
+                <select class="input_field" id="pilseta">
+                    <option disabled selected value></option>
+                    <option class="option">Ainaži</option>
+                    <option class="option">Aizkraukle</option>
+                    <option class="option">Aizpute</option>
+                    <option class="option">Aknīste</option>
+                    <option class="option">Aloja</option>
+                    <option class="option">Alūksne</option>
+                    <option class="option">Ape</option>
+                    <option class="option">Auce</option>
+                    <option class="option">Baldone</option>
+                    <option class="option">Baloži</option>
+                    <option class="option">Balvi</option>
+                    <option class="option">Bauska</option>
+                    <option class="option">Brocēni</option>
+                    <option class="option">Cēsis</option>
+                    <option class="option">Cesvaine</option>
+                    <option class="option">Dagda</option>
+                    <option class="option">Daugavpils</option>
+                    <option class="option">Dobele</option>
+                    <option class="option">Durbe</option>
+                    <option class="option">Grobiņa</option>
+                    <option class="option">Gulbene</option>
+                    <option class="option">Ikšķile</option>
+                    <option class="option">Ilūkste</option>
+                    <option class="option">Jaunjelgava</option>
+                    <option class="option">Jēkabpils</option>
+                    <option class="option">Jelgava</option>
+                    <option class="option">Jūrmala</option>
+                    <option class="option">Kandava</option>
+                    <option class="option">Kārsava</option>
+                    <option class="option">Ķegums</option>
+                    <option class="option">Krāslava</option>
+                    <option class="option">Kuldīga</option>
+                    <option class="option">Lielvārde</option>
+                    <option class="option">Liepāja</option>
+                    <option class="option">Līgatne</option>
+                    <option class="option">Limbaži</option>
+                    <option class="option">Līvāni</option>
+                    <option class="option">Lubāna</option>
+                    <option class="option">Ludza</option>
+                    <option class="option">Madona</option>
+                    <option class="option">Mazsalaca</option>
+                    <option class="option">Ogre</option>
+                    <option class="option">Olaine</option>
+                    <option class="option">Pāvilosta</option>
+                    <option class="option">Piltene</option>
+                    <option class="option">Pļaviņas</option>
+                    <option class="option">Preiļi</option>
+                    <option class="option">Priekule</option>
+                    <option class="option">Rēzekne</option>
+                    <option class="option">Rīga</option>
+                    <option class="option">Rūjiena</option>
+                    <option class="option">Sabile</option>
+                    <option class="option">Salacgrīva</option>
+                    <option class="option">Salaspils</option>
+                    <option class="option">Saldus</option>
+                    <option class="option">Saulkrasti</option>
+                    <option class="option">Seda</option>
+                    <option class="option">Sigulda</option>
+                    <option class="option">Skrunda</option>
+                    <option class="option">Smiltene</option>
+                    <option class="option">Staicele</option>
+                    <option class="option">Stende</option>
+                    <option class="option">Strenči</option>
+                    <option class="option">Subate</option>
+                    <option class="option">Talsi</option>
+                    <option class="option">Tukums</option>
+                    <option class="option">Valdemārpils</option>
+                    <option class="option">Valka</option>
+                    <option class="option">Valmiera</option>
+                    <option class="option">Vangaži</option>
+                    <option class="option">Varakļāni</option>
+                    <option class="option">Ventspilsv</option>
+                    <option class="option">Viesīte</option>
+                    <option class="option">Viļaka</option>
+                    <option class="option">Viļāni</option>
+                    <option class="option">Zilupe</option>
+                </select>
+            </div>
+            <div class="input_box">
+                <label for="address">Turētāja adrese</label>
+                <input class="input_field"type="text" id="address">
+            </div>
+            <div class="input_box">
+                <label for="type_accept">Tipa apstiprinājuma nr.</label>
+                <input class="input_field"type="number" id="type_accept">
+            </div>
+            <div class="input_box">
+                <label for="apliecibas_nr">Motora tilpums (cm³)</label>
+                <input class="input_field"type="number" id="tilpums">
+            </div>
+            <div class="input_box">
+                <label for="degviela">Degviela</label>
+                <select class="input_field" id="degviela">
+                    <option disabled selected value></option>
+                    <option value="Benzīns">Benzīns</option>
+                    <option value="Benzīns/Gāze">Benzīns/Gāze</option>
+                    <option value="Dīzelis">Dīzelis</option>
+                    <option value="elektriskā">Elekriskā</option>
+                    <option value="hibrīds">Hibrīds</option>
+                </select>
+            </div>
+            <div class="input_box">
+                <label for="color">Krāsa.</label>
+                <select class="input_field" id="krasa">
+                    <option disabled selected value></option>
+                    <option value="sarkana">Sarkana</option>
+                    <option value="Zila">Zila</option>
+                    <option value="Oranža">Oranža</option>
+                    <option value="Violeta">Violeta</option>
+                    <option value="Melna">Melna</option>
+                    <option value="Balta">Balta</option>
+                    <option value="Zaļa">Zaļa</option>
+                    <option value="Sudraba">Sudraba</option>
+                    <option value="Zelta">Zelta</option>
+                    <option value="Dzeltena">Dzeltena</option>
+                    <option value="cits">Cits</option>
+
+                </select>
+            </div>
+            <div class="input_box">
+                <label for="seats">Sēdvietas</label>
+                <input class="input_field" type="number" id="seats">
+            </div>
+            <div class="input_box">
+                <label for="type">Veids</label>
+                <input class="input_field" type="text" id="type">
+            </div>
+            <div class="input_box">
+                <label for="piezimes">Piezīmes</label>
+                <input class="input_field" type="text" id="piezimes">
+            </div>
+        </div>
+        <div class="box_footer">
+            <button class="btn">Submit!</button>
+        </div>
+    </div>
+</body>
+</html>
