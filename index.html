@@ -16,11 +16,11 @@
         <div class="box_body">
             <div class="input_box">
                 <label for="apliecibas_nr">Apliecības nr.</label>
-                <input required onkeydown="return /[a-z0-9]/i.test(event.key)" class="input_field"type="text" maxlength=9 id="apliecibas_nr">
+                <input required oninput="this.value = this.value.toUpperCase()" onkeydown="return /[a-z0-9]/i.test(event.key)" class="input_field"type="text" maxlength=9 id="apliecibas_nr">
             </div>
             <div class="input_box">
                 <label for="registracijas_nr">Reģistrācijas nr.</label>
-                <input required onkeydown="return /[a-z0-9]/i.test(event.key)" class="input_field"type="text" maxlength=6 id="registracijas_nr">
+                <input required oninput="this.value = this.value.toUpperCase()" onkeydown="return /[a-z0-9]/i.test(event.key)" class="input_field"type="text" maxlength=6 id="registracijas_nr">
             </div>
             <div class="input_box">
                 <label for="marka">Marka</label>
@@ -36,7 +36,7 @@
             </div>
             <div class="input_box">
                 <label for="vin">VIN</label>
-                <input required onkeydown="return /[a-z0-9]/i.test(event.key)" class="input_field" maxlength=17 type="text" id="vin">
+                <input required onkeypress="checkVIN(event)" oninput="this.value = this.value.toUpperCase()" onkeydown="return /[a-z0-9]/i.test(event.key)" class="input_field" maxlength=17 type="text" id="vin">
             </div>
             <div class="input_box">
                 <label for="city">Turētāja pilsēta</label>

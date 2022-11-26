@@ -84,3 +84,9 @@ form.addEventListener("submit", (e)=>{
   })
   alert(`Jūsu dati: \n ${JSON.stringify(data)} ! \n\nNosūtīt uz datubāzi - `)
 })
+const checkVIN = (e)=>{
+  if(e.key.toUpperCase()==="I" || e.key.toUpperCase()==="O" || e.key.toUpperCase()==="Q"){
+    console.log("good")
+    e.preventDefault()
+  }
+}
