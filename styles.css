@@ -13,6 +13,7 @@ html, body{
     background-color: #212529;
 }
 .box{
+    z-index: 3;
     width: 45vmax;
     height: 600px;
     /* box-shadow: 0px 0px 5px 1px white; */
@@ -56,7 +57,7 @@ label{
     border-radius: 0px;
     outline: none;
     transition: all .3s;
-    width: 20vmax;
+    width: 23vmax;
     height: 22px;
     background-color: #212529;
     border: none;
@@ -99,4 +100,19 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 500000000000s ease-in-out 0s;
     -webkit-text-fill-color: white;
+}
+
+.spacer{
+    position: absolute;
+    z-index: 1;
+    aspect-ratio: 960/540;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('blob-scene-haikei.svg');
+}
+svg{
+    height: 100%;
+    width: 100%;
 }

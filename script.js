@@ -53,11 +53,14 @@ marka.addEventListener("change", (e)=>{
     modelis.disabled=false
     fetchModel(e.target.value)
 })
-letter_input.forEach(el=>{
-  el.addEventListener("input", (e)=>{
-    console.log(document.querySelector(`#${e.target.id}`))
-  })
-})
+
+function inpNum(e) {
+    e = e || window.event;
+    var charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
+    var charStr = String.fromCharCode(charCode);
+    if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
+}
+
 form.addEventListener("submit", (e)=>{
   e.preventDefault()
   const data = ({
