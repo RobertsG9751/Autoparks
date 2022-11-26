@@ -54,10 +54,11 @@ label{
     align-items: flex-start;
 }
 .input_field{
+    cursor:default;
     border-radius: 0px;
     outline: none;
     transition: all .3s;
-    width: 23vmax;
+    width: 21vmax;
     height: 22px;
     background-color: #212529;
     border: none;
@@ -93,6 +94,9 @@ label{
 }
 .btn:hover::before{
     transform: scale(1);
+}
+.input_box:hover .input_field{
+    border-bottom:1px solid #2a9d8f;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
