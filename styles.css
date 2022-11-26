@@ -45,6 +45,7 @@ label{
     width: 100%;
 }
 .input_box{
+    outline: none;
     box-shadow: 0px 0px 0px 0px #212529;
     height: 14%;
     display: flex;
