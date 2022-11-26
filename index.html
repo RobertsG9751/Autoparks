@@ -9,22 +9,22 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="box">
+    <form class="box" id="form">
         <div class="box_header">
             <h2>Autoparka Reģistrācija</h2>
         </div>
         <div class="box_body">
             <div class="input_box">
                 <label for="apliecibas_nr">Apliecības nr.</label>
-                <input class="input_field"type="number" id="apliecibas_nr">
+                <input required class="input_field"type="text" maxlength=9 id="apliecibas_nr">
             </div>
             <div class="input_box">
                 <label for="registracijas_nr">Reģistrācijas nr.</label>
-                <input class="input_field"type="number" id="registracijas_nr">
+                <input required  class="input_field"type="text" maxlength=6 id="registracijas_nr">
             </div>
             <div class="input_box">
                 <label for="marka">Marka</label>
-                <select class="input_field" id="marka">
+                <select required class="input_field" id="marka">
                     <option disabled selected value></option>
                 </select>
             </div>
@@ -36,11 +36,11 @@
             </div>
             <div class="input_box">
                 <label for="vin">VIN</label>
-                <input class="input_field"type="text" id="vin">
+                <input required  class="input_field" maxlength=17 type="text" id="vin">
             </div>
             <div class="input_box">
                 <label for="city">Turētāja pilsēta</label>
-                <select class="input_field" id="pilseta">
+                <select required  class="input_field" id="pilseta">
                     <option disabled selected value></option>
                     <option class="option">Ainaži</option>
                     <option class="option">Aizkraukle</option>
@@ -122,19 +122,19 @@
             </div>
             <div class="input_box">
                 <label for="address">Turētāja adrese</label>
-                <input class="input_field"type="text" id="address">
+                <input required  class="input_field"type="text" id="address">
             </div>
             <div class="input_box">
                 <label for="type_accept">Tipa apstiprinājuma nr.</label>
-                <input class="input_field"type="number" id="type_accept">
+                <input required  class="input_field"type="text" id="type_accept">
             </div>
             <div class="input_box">
                 <label for="apliecibas_nr">Motora tilpums (cm³)</label>
-                <input class="input_field"type="number" id="tilpums">
+                <input required  class="input_field letter_input"type="number" min="0" id="tilpums">
             </div>
             <div class="input_box">
                 <label for="degviela">Degviela</label>
-                <select class="input_field" id="degviela">
+                <select required  class="input_field" id="degviela">
                     <option disabled selected value></option>
                     <option value="Benzīns">Benzīns</option>
                     <option value="Benzīns/Gāze">Benzīns/Gāze</option>
@@ -145,7 +145,7 @@
             </div>
             <div class="input_box">
                 <label for="color">Krāsa.</label>
-                <select class="input_field" id="krasa">
+                <select required  class="input_field" id="krasa">
                     <option disabled selected value></option>
                     <option value="sarkana">Sarkana</option>
                     <option value="Zila">Zila</option>
@@ -163,11 +163,21 @@
             </div>
             <div class="input_box">
                 <label for="seats">Sēdvietas</label>
-                <input class="input_field" type="number" id="seats">
+                <input required  class="input_field letter_input" min="1" type="number" id="seats">
             </div>
             <div class="input_box">
                 <label for="type">Veids</label>
-                <input class="input_field" type="text" id="type">
+                <select required  class="input_field" id="type">
+                    <option disabled selected value></option>
+                    <option value="Apvidus">Apvidus</option>
+                    <option value="Hečbeks">Hečbeks</option>
+                    <option value="Kabriolets">Kabriolets</option>
+                    <option value="Mikroautobuss">Kupeja</option>
+                    <option value="Minivens">Minivens</option>
+                    <option value="Pikaps">Pikaps</option>
+                    <option value="Sedans">Sedans</option>
+                    <option value="Universāls">Universāls</option>
+                </select>
             </div>
             <div class="input_box">
                 <label for="piezimes">Piezīmes</label>
@@ -175,8 +185,8 @@
             </div>
         </div>
         <div class="box_footer">
-            <button class="btn">Submit!</button>
+            <button type="submit" class="btn">Submit!</button>
         </div>
-    </div>
+    </form>
 </body>
 </html>

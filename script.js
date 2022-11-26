@@ -13,6 +13,8 @@ const sedvietas = document.querySelector("#seats")
 const veids = document.querySelector("#type")
 const piezimes = document.querySelector("#piezimes")
 const btn = document.querySelector(".btn")
+const form = document.querySelector("#form")
+const letter_input = document.querySelectorAll(".letter_input")
 
 const fetchMark = async () =>{
     const fetchData = await fetch("https://car-api2.p.rapidapi.com/api/makes", {
@@ -51,6 +53,28 @@ marka.addEventListener("change", (e)=>{
     modelis.disabled=false
     fetchModel(e.target.value)
 })
-btn.addEventListener("click", ()=>{
-  console.log(pilseta)
+letter_input.forEach(el=>{
+  el.addEventListener("input", (e)=>{
+    console.log(document.querySelector(`#${e.target.id}`))
+  })
+})
+form.addEventListener("submit", (e)=>{
+  e.preventDefault()
+  const data = ({
+    "Apliecibas_nr": apliecibas_nr.value,
+    "Registracijas_nr": registracijas_nr.value,
+    "Marka": marka.value,
+    "Modelis": modelis.value,
+    "VIN": vin.value,
+    "Pilseta": pilseta.value,
+    "Adrese": adrese.value,
+    "Apstirpinajuma_nr": apliecibas_nr.value,
+    "Tilpums": tilpums.value,
+    "Degviela": degviela.value,
+    "Krasa": krasa.value,
+    "Sedvietas": sedvietas.value,
+    "Veids": veids.value,
+    "Piezīmes": piezimes.value
+  })
+  alert(`Jūsu dati: \n ${JSON.stringify(data)} ! \n\nNosūtīt uz datubāzi - `)
 })
