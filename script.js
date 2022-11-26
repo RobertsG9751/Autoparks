@@ -55,10 +55,13 @@ marka.addEventListener("change", (e)=>{
 })
 
 function inpNum(e) {
-    e = e || window.event;
-    var charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
-    var charStr = String.fromCharCode(charCode);
-    if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
+  if(e.target.value.length>=4){
+    e.preventDefault()
+  }
+  e = e || window.event;
+  var charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
+  var charStr = String.fromCharCode(charCode);
+  if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
 }
 
 form.addEventListener("submit", (e)=>{

@@ -122,15 +122,15 @@
             </div>
             <div class="input_box">
                 <label for="address">Turētāja adrese</label>
-                <input required  class="input_field"type="text" id="address">
+                <input required onkeydown="return /[a-z0-9]/i.test(event.key)" class="input_field"type="text" id="address">
             </div>
             <div class="input_box">
                 <label for="type_accept">Tipa apstiprinājuma nr.</label>
-                <input required  class="input_field"type="text" id="type_accept">
+                <input required onkeydown="return /[a-z0-9]/i.test(event.key)" class="input_field"type="text" id="type_accept">
             </div>
             <div class="input_box">
                 <label for="apliecibas_nr">Motora tilpums (cm³)</label>
-                <input  onkeypress="inpNum(event)" required  class="input_field letter_input"type="number" min="0" id="tilpums">
+                <input onkeypress="inpNum(event)" required  class="input_field letter_input"type="number" min="0" id="tilpums">
             </div>
             <div class="input_box">
                 <label for="degviela">Degviela</label>
@@ -163,7 +163,7 @@
             </div>
             <div class="input_box">
                 <label for="seats">Sēdvietas</label>
-                <input required maxlength="2" onkeypress="inpNum(event)" class="input_field letter_input" min="1" type="number" id="seats">
+                <input required maxlength="2" required  onkeypress="inpNum(event)" class="input_field letter_input" min="1" type="number" id="seats">
             </div>
             <div class="input_box">
                 <label for="type">Veids</label>
