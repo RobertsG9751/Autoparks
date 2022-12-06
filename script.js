@@ -10,42 +10,45 @@ const tilpums = document.querySelector("#tilpums")
 const degviela = document.querySelector("#degviela")
 const krasa = document.querySelector("#krasa")
 const sedvietas = document.querySelector("#seats")
-const veids = document.querySelector("#type")
+const tips = document.querySelector("#type")
 const piezimes = document.querySelector("#piezimes")
 const btn = document.querySelector(".btn")
 const form = document.querySelector("#form")
 const letter_input = document.querySelectorAll(".letter_input")
+const tabula = document.querySelector("#table")
 
 const fetchMark = async () =>{
-    const fetchData = await fetch("https://car-api2.p.rapidapi.com/api/makes", {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": "a9d315108fmsh8891d70e3867b8ep111e50jsne953828c35eb",
-          "X-RapidAPI-Host": "car-api2.p.rapidapi.com",
-        },
-      })
+    const fetchData = await fetch(`http://127.0.0.1:8000/api/markas`)
     const parseData = await fetchData.json()
-    for(let i=0; i<parseData.data.length; i++){
-        marka.insertAdjacentHTML("beforeend", `<option value="${parseData.data[i].name}">${parseData.data[i].name}</option>`)
+    console.log(parseData)
+    for(let i=0; i<parseData.length; i++){
+        marka.insertAdjacentHTML("beforeend", `<option value="${parseData[i].id}">${parseData[i].marka}</option>`)
     }
-
+    const fetchCity = await fetch("http://127.0.0.1:8000/api/pilsetas")
+    const parseCity = await fetchCity.json()
+    for(let i=0; i<parseCity.length; i++){
+      pilseta.insertAdjacentHTML("beforeend", `<option value=${parseCity[i].id}>${parseCity[i].pilseta}</option>`)
+    }
+    const fetchColor = await fetch(`http://127.0.0.1:8000/api/krasas`)
+    const parseColor = await fetchColor.json()
+    for(let i=0; i<parseColor.length;i++){
+      krasa.insertAdjacentHTML("beforeend", `<option value=${parseColor[i].id}>${parseColor[i].krasa}</option>`)
+    }
+    const fetchType = await fetch(`http://127.0.0.1:8000/api/tipi`)
+    const parseType = await fetchType.json()
+    for(let i=0; i<parseType.length; i++){
+      tips.insertAdjacentHTML("beforeend", `<option value=${parseType[i].id}>${parseType[i].tips}</option>`)
+    }
 }
+
 fetchMark()
 const fetchModel = async (model) =>{
     modelis.innerHTML = `<option disabled selected value></option>`
-    const fetchData = await fetch(
-        `https://car-api2.p.rapidapi.com/api/models?make=${model}&sort=id&direction=asc&year=2020&verbose=yes`,
-        {
-          method: "GET",
-          headers: {
-            "X-RapidAPI-Key": "a9d315108fmsh8891d70e3867b8ep111e50jsne953828c35eb",
-            "X-RapidAPI-Host": "car-api2.p.rapidapi.com",
-          },
-        }
-      )
+    console.log(model)
+    const fetchData = await fetch(`http://127.0.0.1:8000/api/models/${model}`)
     const parseData = await fetchData.json()
-    for(let i=0; i<parseData.data.length; i++){
-        modelis.insertAdjacentHTML("beforeend", `<option value="${parseData.data[i].name}">${parseData.data[i].name}</option>`)
+    for(let i=0; i<parseData.length; i++){
+        modelis.insertAdjacentHTML("beforeend", `<option value="${parseData[i].id}">${parseData[i].model}</option>`)
     }
 }
 
@@ -64,7 +67,7 @@ function inpNum(e) {
   if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
 }
 
-form.addEventListener("submit", (e)=>{
+form.addEventListener("submit", async (e)=>{
   e.preventDefault()
   const data = ({
     "Apliecibas_nr": apliecibas_nr.value,
@@ -82,7 +85,63 @@ form.addEventListener("submit", (e)=>{
     "Veids": veids.value,
     "Piezīmes": piezimes.value
   })
-  alert(`Jūsu dati: \n ${JSON.stringify(data)} ! \n\nNosūtīt uz datubāzi - `)
+  console.log(data)
+
+  await fetch("http://127.0.0.1:8000/api/iela", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        "iela": adrese.value,
+        "pilseta_id": pilseta.value
+      }
+    )
+  })
+  await fetch("http://127.0.0.1:8000/api/turetajs", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        "Apliecibas_nr": apliecibas_nr.value,
+        "Registracijas_nr": registracijas_nr.value,
+      }
+    )
+  })
+  await fetch("http://127.0.0.1:8000/api/motors", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        "motora_tilpums": tilpums.value,
+        "degviela": degviela.value,
+      }
+    )
+  })
+  await fetch("http://127.0.0.1:8000/api/auto", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        "VIN": vin.value,
+        "modelis_id": modelis.value,
+        "apstirpinajuma_nr": apliecibas_nr.value,
+        "krasa": krasa.value,
+        "sedvietas": sedvietas.value,
+        "tips_id": tips.value,
+        "piezimes": piezimes.value
+      }
+    )
+  })
+
+
 })
 const checkVIN = (e)=>{
   if(e.key.toUpperCase()==="I" || e.key.toUpperCase()==="O" || e.key.toUpperCase()==="Q"){
@@ -90,3 +149,27 @@ const checkVIN = (e)=>{
     e.preventDefault()
   }
 }
+
+
+const getAllCars = async () =>{
+  const fetchCars = await fetch(`http://127.0.0.1:8000/api/auto`)
+  const parseCars = await fetchCars.json()
+  parseCars.forEach(el=>{
+    table.insertAdjacentHTML("beforeend",
+    `<tr>
+      <td>${el.VIN}</td>
+      <td>${el.apstiprinajuma_nr}</td>
+      <td>${el.registracijas_nr}</td>
+      <td>${el.apliecibas_nr}</td>
+      <td>${el.krasa}</td>
+      <td>${el.sedvietas}</td>
+      <td>${el.tips}</td>
+      <td>${el.motora_tilpums}</td>
+      <td>${el.degviela}</td>
+      <td>${el.iela}</td>
+      <td>${el.pilseta}</td>
+    </tr>`
+    )
+  })
+}
+getAllCars()
