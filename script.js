@@ -168,6 +168,9 @@ const getAllCars = async () =>{
       <td>${el.degviela}</td>
       <td>${el.iela}</td>
       <td>${el.pilseta}</td>
+      <td>${el.piezimes}</td>
+      <td>${el.marka}</td>
+      <td>${el.model}</td>
     </tr>`
     )
   })
